@@ -20,4 +20,4 @@ GitHub Pages, deployed by the `Deploy to GitHub Pages` workflow (`.github/workfl
 1. Add a `<li class="tool ...">` card to `index.html` (accent classes: `hot`, `cool`, `amber`).
 2. Give the tool the shared look and branding described in [DESIGN.md](DESIGN.md).
 
-These tools support, and do not replace, clinical judgement and current guidance. They are reference aids, not certified medical devices.
+These tools display published guidance and reference data for the clinician to interpret. They support, and do not replace, clinical judgement and current guidance.
