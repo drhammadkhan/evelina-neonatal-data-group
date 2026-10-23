@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Evelina Neonatal Data Group</title>
-<meta name="description" content="Browser-based reference tools from the Evelina Neonatal Data Group: ROP screening window calculator, BCG TB-incidence check and ventricular index chart.">
+<meta name="description" content="Browser-based reference tools from the Evelina Neonatal Data Group: ROP screening window calculator, BCG TB-incidence check, ventricular index chart and jaundice treatment thresholds.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3eee4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b2227">
 <script>
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://drhammadkhan.github.io/evelina-neonatal-data-group/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Evelina Neonatal Data Group: ROP screening window calculator, BCG tool and ventricular index chart">
+<meta property="og:image:alt" content="Evelina Neonatal Data Group: ROP screening window calculator, BCG tool, ventricular index chart and jaundice treatment thresholds">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://drhammadkhan.github.io/evelina-neonatal-data-group/og-image.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -120,9 +120,9 @@ h1 em{font-style:italic;font-weight:300}
   transition:transform .18s var(--ease-out),border-color .18s;
   animation:rise .45s var(--ease-out) both;
 }
-.tool:nth-child(2){animation-delay:60ms} .tool:nth-child(3){animation-delay:120ms}
+.tool:nth-child(2){animation-delay:60ms} .tool:nth-child(3){animation-delay:120ms} .tool:nth-child(4){animation-delay:180ms}
 .tool::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);border-radius:4px 0 0 4px}
-.tool.hot{--accent:var(--hot)} .tool.cool{--accent:var(--cool)} .tool.amber{--accent:var(--amber)}
+.tool.hot{--accent:var(--hot)} .tool.cool{--accent:var(--cool)} .tool.amber{--accent:var(--amber)} .tool.ink{--accent:var(--ink)}
 .tool .num{font:500 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .tool h2{font-weight:500;font-size:1.45rem;line-height:1.2;letter-spacing:-.01em;margin:8px 0 6px;font-variation-settings:"opsz" 72}
 .tool h2 a{color:inherit;text-decoration:none}
@@ -175,6 +175,12 @@ footer a{color:var(--ink);text-underline-offset:3px}
       <h2><a href="https://drhammadkhan.github.io/levene-vi-chart/">Ventricular index chart</a></h2>
       <p>Plot right and left ventricular index against corrected gestational age on the Levene (1981) reference chart. Patient data stays on your device.</p>
       <div class="links"><span class="go">Open tool &rarr;</span><a class="src" href="https://github.com/drhammadkhan/levene-vi-chart">Source on GitHub</a></div>
+    </li>
+    <li class="tool ink">
+      <span class="num">04 &middot; Neonatal jaundice</span>
+      <h2><a href="https://drhammadkhan.github.io/jaundice-thresholds/">Jaundice treatment thresholds</a></h2>
+      <p>Plot a baby&rsquo;s serum bilirubin against the NICE CG98 phototherapy and exchange transfusion lines for their gestational age.</p>
+      <div class="links"><span class="go">Open tool &rarr;</span><a class="src" href="https://github.com/drhammadkhan/jaundice-thresholds">Source on GitHub</a></div>
     </li>
   </ul>
 
