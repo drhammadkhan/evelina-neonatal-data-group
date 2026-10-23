@@ -7,6 +7,7 @@ Landing page for the group's browser-based reference tools: **https://drhammadkh
 | ROP screening window calculator | [open](https://drhammadkhan.github.io/ROP-Calculator/) | [ROP-Calculator](https://github.com/drhammadkhan/ROP-Calculator) |
 | BCG tool (TB incidence check) | [open](https://drhammadkhan.github.io/tb-rate-check/) | [tb-rate-check](https://github.com/drhammadkhan/tb-rate-check) |
 | Ventricular index chart | [open](https://drhammadkhan.github.io/levene-vi-chart/) | [levene-vi-chart](https://github.com/drhammadkhan/levene-vi-chart) |
+| Jaundice treatment thresholds | [open](https://drhammadkhan.github.io/jaundice-thresholds/) | [jaundice-thresholds](https://github.com/drhammadkhan/jaundice-thresholds) |
 
 Static site, no build step: `index.html`, `favicon.svg`, `og-image.png` and `fonts/` (the workflow publishes exactly these) (Fraunces and DM Mono, SIL Open Font License, self-hosted).
 
