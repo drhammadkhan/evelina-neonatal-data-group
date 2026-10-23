@@ -41,6 +41,12 @@ Small text must be at least 4.5:1 on `--paper`, `--paper2` and the tints. `--hot
 
 Header: red dot, group name (link), hairline rule. Then a mono uppercase kicker with a leading rule, then an `h1` in Fraunces 400 with the last word in italic 300. Cards: `--paper2`, 1px `--line` border, 4px radius, 5px left accent bar. Buttons: pill, DM Mono 0.85rem, ink fill for primary. Notices: `--paper2` with a 5px `--hot` left bar. Footer: mono small print, then an italic serif credit line.
 
+## Theme switch
+
+Every tool has a round sun/moon button at the right of the header (`#themeBtn`). With no choice made, each page follows the device's light/dark setting. Pressing the button sets `data-theme="light"` or `"dark"` on `<html>`, which overrides the device setting. The choice is stored in `localStorage` under the key `neonatal-theme`; because all the tools are served from the same `drhammadkhan.github.io` origin, one choice carries across all of them. (The ROP calculator's older `rop-theme` key is still read as a fallback.)
+
+Implementation, identical in each tool: a small inline script in `<head>` (so the saved theme applies before first paint and the page does not flash), a delegated click handler on `#themeBtn` (so it survives pages that re-render their markup), `theme-color` meta tags kept in sync, `color-scheme` set so native controls match, and a `themechange` event for anything drawn in JavaScript (the Levene chart redraws on it). Dark tokens are defined twice: under `prefers-color-scheme: dark` for `:root:not([data-theme="light"])`, and under `:root[data-theme="dark"]`. Print stylesheets must reset tokens with `:root, :root[data-theme="dark"]` so paper output stays white.
+
 ## Behaviour
 
 Hover styles only inside `@media (hover: hover) and (pointer: fine)`; press feedback via `:active` (scale .97, 100ms); transitions list exact properties and use `cubic-bezier(.23, 1, .32, 1)`; `prefers-reduced-motion` removes movement but keeps colour and opacity feedback; inputs are at least 16px so iOS does not zoom.
