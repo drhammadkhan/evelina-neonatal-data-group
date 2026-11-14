@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v4
-      - run: mkdir _site && cp -r index.html favicon.svg og-image.png fonts _site/
+      - run: mkdir _site && cp -r index.html favicon.svg og-image.png fonts stats _site/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
