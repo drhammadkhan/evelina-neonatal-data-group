@@ -8,6 +8,7 @@ Landing page for the group's browser-based reference tools: **https://drhammadkh
 | BCG tool (TB incidence check) | [open](https://drhammadkhan.github.io/tb-rate-check/) | [tb-rate-check](https://github.com/drhammadkhan/tb-rate-check) |
 | Ventricular index chart | [open](https://drhammadkhan.github.io/levene-vi-chart/) | [levene-vi-chart](https://github.com/drhammadkhan/levene-vi-chart) |
 | Jaundice treatment thresholds | [open](https://drhammadkhan.github.io/jaundice-thresholds/) | [jaundice-thresholds](https://github.com/drhammadkhan/jaundice-thresholds) |
+| Neonatal blood pressure percentiles | [open](https://drhammadkhan.github.io/neonatal-hypertension/) | [neonatal-hypertension](https://github.com/drhammadkhan/neonatal-hypertension) |
 
 Static site, no build step: `index.html`, `favicon.svg`, `og-image.png`, the home-screen icons (`apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `manifest.webmanifest`) and `fonts/` (the workflow publishes exactly these) (Fraunces and DM Mono, SIL Open Font License, self-hosted).
 
@@ -31,7 +32,7 @@ Setup:
 1. Create a free GoatCounter site and note its code (`xxx` in `xxx.goatcounter.com`).
 2. In GoatCounter, Settings, enable "Allow adding visitor counts on your website".
 3. Set `CODE` in `stats/index.html`.
-4. Add this to the `<head>` of ROP-Calculator, tb-rate-check and jaundice-thresholds (the path counted is the tool's own URL, e.g. `/ROP-Calculator/`):
+4. Add this to the `<head>` of ROP-Calculator, tb-rate-check, jaundice-thresholds and neonatal-hypertension (the path counted is the tool's own URL, e.g. `/ROP-Calculator/`):
 
 ```html
 <script data-goatcounter="https://xxx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

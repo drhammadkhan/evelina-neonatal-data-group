@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Evelina Neonatal Data Group</title>
-<meta name="description" content="Browser-based reference tools from the Evelina Neonatal Data Group: ROP screening window calculator, BCG TB-incidence check, ventricular index chart and jaundice treatment thresholds.">
+<meta name="description" content="Browser-based reference tools from the Evelina Neonatal Data Group: ROP screening window calculator, BCG TB-incidence check, ventricular index chart, jaundice treatment thresholds and neonatal blood pressure percentiles.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3eee4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b2227">
 <script>
@@ -123,7 +123,7 @@ h1 em{font-style:italic;font-weight:300}
   transition:transform .18s var(--ease-out),border-color .18s;
   animation:rise .45s var(--ease-out) both;
 }
-.tool:nth-child(2){animation-delay:60ms} .tool:nth-child(3){animation-delay:120ms} .tool:nth-child(4){animation-delay:180ms}
+.tool:nth-child(2){animation-delay:60ms} .tool:nth-child(3){animation-delay:120ms} .tool:nth-child(4){animation-delay:180ms} .tool:nth-child(5){animation-delay:240ms}
 .tool::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);border-radius:4px 0 0 4px}
 .tool.hot{--accent:var(--hot)} .tool.cool{--accent:var(--cool)} .tool.amber{--accent:var(--amber)} .tool.ink{--accent:var(--ink)}
 .tool .num{font:500 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
@@ -184,6 +184,12 @@ footer a{color:var(--ink);text-underline-offset:3px}
       <h2><a href="https://drhammadkhan.github.io/jaundice-thresholds/">Jaundice treatment thresholds</a></h2>
       <p>Plot a baby&rsquo;s serum bilirubin against the NICE CG98 phototherapy and exchange transfusion lines for their gestational age.</p>
       <div class="links"><span class="go">Open tool &rarr;</span><a class="src" href="https://github.com/drhammadkhan/jaundice-thresholds">Source on GitHub</a></div>
+    </li>
+    <li class="tool cool">
+      <span class="num">05 &middot; Blood pressure</span>
+      <h2><a href="https://drhammadkhan.github.io/neonatal-hypertension/">Neonatal blood pressure percentiles</a></h2>
+      <p>Check a baby&rsquo;s systolic, diastolic and mean blood pressure against the 50th, 95th and 99th percentiles for corrected gestational age (Dionne 2012).</p>
+      <div class="links"><span class="go">Open tool &rarr;</span><a class="src" href="https://github.com/drhammadkhan/neonatal-hypertension">Source on GitHub</a></div>
     </li>
   </ul>
 
