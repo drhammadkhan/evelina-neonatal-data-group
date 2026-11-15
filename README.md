@@ -9,7 +9,7 @@ Landing page for the group's browser-based reference tools: **https://drhammadkh
 | Ventricular index chart | [open](https://drhammadkhan.github.io/levene-vi-chart/) | [levene-vi-chart](https://github.com/drhammadkhan/levene-vi-chart) |
 | Jaundice treatment thresholds | [open](https://drhammadkhan.github.io/jaundice-thresholds/) | [jaundice-thresholds](https://github.com/drhammadkhan/jaundice-thresholds) |
 
-Static site, no build step: `index.html`, `favicon.svg`, `og-image.png` and `fonts/` (the workflow publishes exactly these) (Fraunces and DM Mono, SIL Open Font License, self-hosted).
+Static site, no build step: `index.html`, `favicon.svg`, `og-image.png`, the home-screen icons (`apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `manifest.webmanifest`) and `fonts/` (the workflow publishes exactly these) (Fraunces and DM Mono, SIL Open Font License, self-hosted).
 
 ## Hosting
 
