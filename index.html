@@ -189,5 +189,19 @@ footer a{color:var(--ink);text-underline-offset:3px}
     <p class="credit">Evelina Neonatal Data Group<br>Created by Dr Hammad Khan</p>
   </footer>
 </main>
+<script>
+/* Usage count for the Levene chart only. That tool is locked down by a strict CSP (no outside requests), so it cannot count itself;
+   instead a click on its card sends one anonymous GoatCounter event (path only: no cookies, no personal data). */
+(function () {
+  function count(e) {
+    if (e.type === 'auxclick' && e.button !== 1) return;
+    var a = e.target.closest && e.target.closest('a[href*="/levene-vi-chart/"]:not(.src)');
+    if (!a) return;
+    new Image().src = 'https://nicuapps.goatcounter.com/count?e=true&p=' + encodeURIComponent('/click/levene-vi-chart') + '&t=' + encodeURIComponent('Levene chart opened') + '&rnd=' + Date.now();
+  }
+  document.addEventListener('click', count);
+  document.addEventListener('auxclick', count);
+})();
+</script>
 </body>
 </html>

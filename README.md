@@ -21,3 +21,20 @@ GitHub Pages, deployed by the `Deploy to GitHub Pages` workflow (`.github/workfl
 2. Give the tool the shared look and branding described in [DESIGN.md](DESIGN.md).
 
 These tools display published guidance and reference data for the clinician to interpret. They support, and do not replace, clinical judgement and current guidance.
+
+## Usage counter (private)
+
+`stats/index.html` is an unlinked page (`/stats/`, marked `noindex`) that shows how many times each tool has been opened. Counts come from [GoatCounter](https://www.goatcounter.com/), which stores page paths only: no cookies, no personal data, nothing the user enters.
+
+Setup:
+
+1. Create a free GoatCounter site and note its code (`xxx` in `xxx.goatcounter.com`).
+2. In GoatCounter, Settings, enable "Allow adding visitor counts on your website".
+3. Set `CODE` in `stats/index.html`.
+4. Add this to the `<head>` of ROP-Calculator, tb-rate-check and jaundice-thresholds (the path counted is the tool's own URL, e.g. `/ROP-Calculator/`):
+
+```html
+<script data-goatcounter="https://xxx.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+```
+
+The Levene chart cannot take the snippet: its Content-Security-Policy blocks all outside requests, which backs the "data stays on your device" promise (and saved patient files are copies of the app). Instead, `index.html` here sends one anonymous GoatCounter event when its card is clicked (path `/click/levene-vi-chart`). That count only includes opens from this landing page, not direct visits.

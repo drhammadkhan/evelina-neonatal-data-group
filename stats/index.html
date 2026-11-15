@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Usage counts | Evelina Neonatal Data Group</title>
+<meta name="theme-color" content="#f3eee4">
+<script>
+(function () {
+  try {
+    var s = localStorage.getItem('neonatal-theme');
+    if (s === 'light' || s === 'dark') document.documentElement.setAttribute('data-theme', s);
+  } catch (e) {}
+})();
+</script>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:100 900;font-display:swap;src:url("../fonts/fraunces-latin-wght-normal.woff2") format("woff2-variations")}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/dm-mono-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"DM Mono";font-style:normal;font-weight:500;font-display:swap;src:url("../fonts/dm-mono-latin-500-normal.woff2") format("woff2")}
+:root{--paper:#f3eee4;--paper2:#ebe4d6;--ink:#1b1814;--mute:#675f54;--line:#d6cdbb;--hot:#dd4027;--hot-ink:#b3301a;--cool:#1d5e57;--amber:#c5a56e;
+  --serif:"Fraunces",Georgia,serif;--mono:"DM Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--paper:#1b2227;--paper2:#252c31;--ink:#f0deb9;--mute:#aba597;--line:#41474c;--hot:#c78b4c;--hot-ink:#d4a677;--cool:#a9ac8f;--amber:#ddb785}}
+:root[data-theme="dark"]{color-scheme:dark;--paper:#1b2227;--paper2:#252c31;--ink:#f0deb9;--mute:#aba597;--line:#41474c;--hot:#c78b4c;--hot-ink:#d4a677;--cool:#a9ac8f;--amber:#ddb785}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--paper);color:var(--ink);font:17px/1.55 var(--serif)}
+main{max-width:640px;margin:0 auto;padding:44px 22px 40px}
+.brand{font:500 1.05rem/1.2 var(--serif);display:flex;align-items:center;gap:10px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:26px}
+.brand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--hot)}
+.kicker{font:500 .72rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+h1{font-weight:400;font-size:clamp(1.9rem,6vw,2.6rem);line-height:1.1;letter-spacing:-.02em;margin:14px 0 24px}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+li{position:relative;background:var(--paper2);border:1px solid var(--line);border-radius:4px;padding:16px 20px 16px 24px;display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+li::after{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--accent);border-radius:4px 0 0 4px}
+.n{font:500 1.9rem/1 var(--mono);font-variant-numeric:tabular-nums}
+li.total{font-weight:500}
+.note{margin-top:20px;font:400 .78rem/1.6 var(--mono);color:var(--mute)}
+.err{color:var(--hot-ink)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">Evelina Neonatal Data Group</div>
+  <div class="kicker">Private &middot; not linked from anywhere</div>
+  <h1>Tool usage</h1>
+  <ul id="list"></ul>
+  <p class="note" id="note"></p>
+</main>
+<script>
+/* Reads page-view counts from GoatCounter. Set CODE to your GoatCounter site code
+   (the "xxx" in https://xxx.goatcounter.com). Each tool's path is its repo path on github.io. */
+var CODE = 'nicuapps';
+var TOOLS = [
+  { name: 'ROP screening window calculator', path: '/ROP-Calculator/',      accent: 'var(--cool)' },
+  { name: 'BCG tool',                        path: '/tb-rate-check/',       accent: 'var(--hot)' },
+  { name: 'Ventricular index chart (landing-page clicks)', path: '/click/levene-vi-chart', accent: 'var(--amber)' },
+  { name: 'Jaundice treatment thresholds',   path: '/jaundice-thresholds/', accent: 'var(--ink)' }
+];
+var list = document.getElementById('list'), note = document.getElementById('note'), total = 0, failed = 0;
+
+function row(t) {
+  var li = document.createElement('li');
+  li.style.setProperty('--accent', t.accent);
+  li.innerHTML = '<span></span><span class="n">&hellip;</span>';
+  li.firstChild.textContent = t.name;
+  list.appendChild(li);
+  return li;
+}
+function num(s) { return parseInt(String(s).replace(/[^0-9]/g, ''), 10) || 0; }
+
+if (CODE === 'YOUR-CODE') {
+  note.className = 'note err';
+  note.textContent = 'Not configured: set CODE in stats/index.html to your GoatCounter site code.';
+} else {
+  var pending = TOOLS.length;
+  TOOLS.forEach(function (t) {
+    var li = row(t), out = li.lastChild;
+    fetch('https://' + CODE + '.goatcounter.com/counter/' + encodeURIComponent(t.path) + '.json')
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) { out.textContent = d.count; total += num(d.count); })
+      .catch(function (e) { out.textContent = e.message === '404' ? '0' : 'n/a'; if (e.message !== '404') failed++; })
+      .then(function () {
+        if (--pending) return;
+        var li = document.createElement('li'); li.className = 'total'; li.style.setProperty('--accent', 'var(--line)');
+        li.innerHTML = '<span>Total</span><span class="n"></span>'; li.lastChild.textContent = total.toLocaleString('en-GB');
+        list.appendChild(li);
+        note.textContent = failed ? 'Some counts could not be loaded. Check that "Allow adding visitor counts on your website" is on in GoatCounter settings.'
+                                  : 'Page views since each tool started reporting. Counts come from GoatCounter and contain no personal data.';
+      });
+  });
+}
+</script>
+</body>
+</html>
